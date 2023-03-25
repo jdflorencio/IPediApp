@@ -12,15 +12,14 @@ public class ApplicationDbContext : DbContext
     protected override void OnModelCreating(ModelBuilder builder)
     {
         //usando o fluente api
-        builder.Entity<Product>()
+       builder.Entity<Product>()
             .Property(p => p.Description).HasMaxLength(255);
 
         builder.Entity<Product>()
             .Property(p => p.Name).IsRequired();
 
-
         builder.Entity<Category>()
-        .Property(p => p.Name).IsRequired();
+            .Property(p => p.Name).IsRequired();
     }
 
     protected override void ConfigureConventions(ModelConfigurationBuilder configuration)
