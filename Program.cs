@@ -2,7 +2,7 @@
 using IPediApp.infra.Data;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddSqlServer<ApplicationDbContext>(builder.Configuration["ConnectionString:IPediDb"]);
+builder.Services.AddSqlServer<ApplicationDbContext>(builder.Configuration["ConnectionStrings:IPediDb"]);
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
