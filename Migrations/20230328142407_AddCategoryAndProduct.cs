@@ -34,8 +34,7 @@ namespace IPediApp.Migrations
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    CategoryId = table.Column<int>(type: "int", nullable: false),
-                    CategoryId1 = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    CategoryId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
                     hasStock = table.Column<bool>(type: "bit", nullable: false),
                     Active = table.Column<bool>(type: "bit", nullable: false),
@@ -48,17 +47,17 @@ namespace IPediApp.Migrations
                 {
                     table.PrimaryKey("PK_Products", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Products_Categories_CategoryId1",
-                        column: x => x.CategoryId1,
+                        name: "FK_Products_Categories_CategoryId",
+                        column: x => x.CategoryId,
                         principalTable: "Categories",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Products_CategoryId1",
+                name: "IX_Products_CategoryId",
                 table: "Products",
-                column: "CategoryId1");
+                column: "CategoryId");
         }
 
         /// <inheritdoc />

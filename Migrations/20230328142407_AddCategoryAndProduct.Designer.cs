@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace IPediApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230325195756_AddCategoryAndProduct")]
+    [Migration("20230328142407_AddCategoryAndProduct")]
     partial class AddCategoryAndProduct
     {
         /// <inheritdoc />
@@ -69,10 +69,7 @@ namespace IPediApp.Migrations
                     b.Property<bool>("Active")
                         .HasColumnType("bit");
 
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("int");
-
-                    b.Property<Guid>("CategoryId1")
+                    b.Property<Guid>("CategoryId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("CreatedBy")
@@ -106,7 +103,7 @@ namespace IPediApp.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CategoryId1");
+                    b.HasIndex("CategoryId");
 
                     b.ToTable("Products");
                 });
@@ -115,7 +112,7 @@ namespace IPediApp.Migrations
                 {
                     b.HasOne("IPediApp.Domain.Products.Category", "Category")
                         .WithMany()
-                        .HasForeignKey("CategoryId1")
+                        .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
